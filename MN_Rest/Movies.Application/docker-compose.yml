@@ -1,0 +1,10 @@
+﻿services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=movies
+    ports:
+      - '9020:5432'
