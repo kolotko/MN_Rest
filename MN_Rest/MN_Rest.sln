@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Api", "Movies.Api\Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Contracts", "Movies.Contracts\Movies.Contracts.csproj", "{67259913-43AC-4256-94DC-89AA381080D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Api", "Identity.Api\Identity.Api.csproj", "{F3C627A2-2BAE-4D8A-B7F7-9F93B148D263}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{67259913-43AC-4256-94DC-89AA381080D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67259913-43AC-4256-94DC-89AA381080D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67259913-43AC-4256-94DC-89AA381080D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3C627A2-2BAE-4D8A-B7F7-9F93B148D263}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3C627A2-2BAE-4D8A-B7F7-9F93B148D263}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3C627A2-2BAE-4D8A-B7F7-9F93B148D263}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3C627A2-2BAE-4D8A-B7F7-9F93B148D263}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

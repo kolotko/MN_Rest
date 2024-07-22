@@ -4,7 +4,7 @@ using Movies.Application.Repositories;
 
 namespace Movies.Application.Services;
 
-public class MovieService(IMovieRepository movieRepository, IValidator<Movie> movieValidator) : IMovieService
+public class MovieService(IMovieRepository movieRepository, IValidator<Movie> movieValidator, IRatingRepository ratingRepository) : IMovieService
 {
     public async Task<bool> CreateAsync(Movie movie, CancellationToken token = default)
     {
@@ -12,22 +12,22 @@ public class MovieService(IMovieRepository movieRepository, IValidator<Movie> mo
         return await movieRepository.CreateAsync(movie, token);
     }
 
-    public async Task<Movie?> GetByIdAsync(Guid id, CancellationToken token = default)
+    public Task<Movie?> GetByIdAsync(Guid id, Guid? userid = default, CancellationToken token = default)
     {
-        return await movieRepository.GetByIdAsync(id, token);
+        return movieRepository.GetByIdAsync(id, userid, token);
     }
 
-    public async Task<Movie?> GetBySlugAsync(string slug, CancellationToken token = default)
+    public Task<Movie?> GetBySlugAsync(string slug, Guid? userid = default, CancellationToken token = default)
     {
-        return await movieRepository.GetBySlugAsync(slug, token);
+        return movieRepository.GetBySlugAsync(slug, userid, token);
     }
 
-    public async Task<IEnumerable<Movie>> GetAllAsync(CancellationToken token = default)
+    public Task<IEnumerable<Movie>> GetAllAsync(Guid? userid = default, CancellationToken token = default)
     {
-        return await movieRepository.GetAllAsync(token);
+        return movieRepository.GetAllAsync(userid, token);
     }
 
-    public async Task<Movie?> UpdateAsync(Movie movie, CancellationToken token = default)
+    public async Task<Movie?> UpdateAsync(Movie movie, Guid? userid = default, CancellationToken token = default)
     {
         await movieValidator.ValidateAndThrowAsync(movie, cancellationToken: token);
         var movieExists = await movieRepository.ExistsByIdAsync(movie.Id, token);
@@ -35,13 +35,24 @@ public class MovieService(IMovieRepository movieRepository, IValidator<Movie> mo
         {
             return null;
         }
-        
+
         await movieRepository.UpdateAsync(movie, token);
+
+        if (!userid.HasValue)
+        {
+            var rating = await ratingRepository.GetRatingAsync(movie.Id, token);
+            movie.Rating = rating;
+            return movie;
+        }
+        
+        var ratings = await ratingRepository.GetRatingAsync(movie.Id, userid.Value, token);
+        movie.Rating = ratings.Rating;
+        movie.UserRating = ratings.UserRating;
         return movie;
     }
 
-    public async Task<bool> DeleteByIdAsync(Guid id, CancellationToken token = default)
+    public Task<bool> DeleteByIdAsync(Guid id, CancellationToken token = default)
     {
-        return await movieRepository.DeleteByIdAsync(id, token);
+        return movieRepository.DeleteByIdAsync(id, token);
     }
 }

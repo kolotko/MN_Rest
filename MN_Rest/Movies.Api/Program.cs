@@ -1,3 +1,8 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Movies.Api;
+using Movies.Api.Auth;
 using Movies.Api.Mapping;
 using Movies.Application;
 using Movies.Application.Database;
@@ -9,6 +14,31 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApplication();
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    x.TokenValidationParameters = new TokenValidationParameters()
+    {
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)),
+        ValidateIssuerSigningKey = true,
+        ValidateLifetime = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        ValidateIssuer = true,
+        ValidateAudience = true,
+    };
+});
+builder.Services.AddAuthorization(x =>
+{
+    x.AddPolicy(AuthConstants.AdminUserPolicyName, p => p.RequireClaim(AuthConstants.AdminUserClaimName, "true"));
+    x.AddPolicy(AuthConstants.TrustedMemberPolicyName, p => p.RequireAssertion(c => 
+        c.User.HasClaim(m => m is { Type : AuthConstants.AdminUserClaimName, Value: "true" }) || 
+        c.User.HasClaim(m => m is { Type : AuthConstants.TrustedMemberClaimName, Value: "true", })));
+});
 builder.Services.AddControllers();
 builder.Services.AddDatabase(builder.Configuration["Database:ConnectionString"]!);
 var app = builder.Build();
@@ -21,6 +51,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 app.UseMiddleware<ValidationMappingMiddleware>();
 var dbInitializer = app.Services.GetRequiredService<DbInitializer>();
