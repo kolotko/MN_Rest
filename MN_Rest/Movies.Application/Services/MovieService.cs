@@ -4,7 +4,11 @@ using Movies.Application.Repositories;
 
 namespace Movies.Application.Services;
 
-public class MovieService(IMovieRepository movieRepository, IValidator<Movie> movieValidator, IRatingRepository ratingRepository) : IMovieService
+public class MovieService(
+    IMovieRepository movieRepository, 
+    IValidator<Movie> movieValidator, 
+    IRatingRepository ratingRepository,
+    IValidator<GetAllMoviesOptions> optionsValidator) : IMovieService
 {
     public async Task<bool> CreateAsync(Movie movie, CancellationToken token = default)
     {
@@ -22,9 +26,15 @@ public class MovieService(IMovieRepository movieRepository, IValidator<Movie> mo
         return movieRepository.GetBySlugAsync(slug, userid, token);
     }
 
-    public Task<IEnumerable<Movie>> GetAllAsync(Guid? userid = default, CancellationToken token = default)
+    public async Task<IEnumerable<Movie>> GetAllAsync(GetAllMoviesOptions options, CancellationToken token = default)
     {
-        return movieRepository.GetAllAsync(userid, token);
+        await optionsValidator.ValidateAndThrowAsync(options, token);
+        return await movieRepository.GetAllAsync(options, token);
+    }
+
+    public Task<int> GetCountAsync(string? title, int? year, CancellationToken token = default)
+    {
+        return movieRepository.GetCountAsync(title, year, token);
     }
 
     public async Task<Movie?> UpdateAsync(Movie movie, Guid? userid = default, CancellationToken token = default)
