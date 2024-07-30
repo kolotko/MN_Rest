@@ -1,6 +1,3 @@
 ﻿namespace Movies.Application;
 
-public interface IApplicationMarker
-{
-    
-}
+public interface IApplicationMarker {}

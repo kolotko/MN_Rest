@@ -14,3 +14,6 @@ public interface IRatingRepository
 
     Task<IEnumerable<MovieRating>> GetRatingsForUserAsync(Guid userId, CancellationToken token = default);
 }
+
+
+
