@@ -2,7 +2,7 @@
 using Movies.Contracts.Requests;
 using Movies.Contracts.Responses;
 
-namespace Movies.Api.Mapping;
+namespace Movies.MinimalApi.Mapping;
 
 public static class ContractMapping
 {
@@ -85,6 +85,3 @@ public static class ContractMapping
         return options;
     }
 }
-
-
-
