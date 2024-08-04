@@ -1,0 +1,37 @@
+﻿### GET Token
+GET {{baseUrl}}/login
+Content-Type: application/json
+
+> {%
+     client.assert(response.status === 200, "Auth failed.");
+     client.global.set("jwt", "Bearer " + response.body.token);
+     client.log("jwt = " + response.body.token);
+ %}
+
+### GET Hello World
+GET {{baseUrl}}/helloworld
+Content-Type: application/json
+
+### POST Person
+POST {{baseUrl}}/create
+Authorization: {{jwt}}
+Content-Type: application/json
+
+{
+      "FirstName": "First name",
+      "LastName": "Last name",
+      "Age": 25
+}
+
+
+### POST upload img
+POST {{baseUrl}}/upload
+Authorization: {{jwt}}
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="file"; filename="example.png"
+Content-Type: image/png
+
+< ./example.png
+--boundary--
