@@ -4,6 +4,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MN_Kestrel", "MN_Kestrel\MN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MN_Headers", "MN_Headers\MN_Headers.csproj", "{D3CEDC54-28E9-415B-AE1A-88788289E9FA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Retries", "Retries", "{3C3530CC-A198-466F-B0EC-EF6B36E1F1AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiWithSometimesNotWorkingEndPoint", "ApiWithSometimesNotWorkingEndPoint\ApiWithSometimesNotWorkingEndPoint.csproj", "{F59D9CFC-CB7D-485F-98AF-C01D6774940E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetriesImplementation", "RetriesImplementation\RetriesImplementation.csproj", "{9C9AA239-47E2-427B-B478-62B949ABA3DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +24,17 @@ Global
 		{D3CEDC54-28E9-415B-AE1A-88788289E9FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3CEDC54-28E9-415B-AE1A-88788289E9FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3CEDC54-28E9-415B-AE1A-88788289E9FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F59D9CFC-CB7D-485F-98AF-C01D6774940E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F59D9CFC-CB7D-485F-98AF-C01D6774940E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F59D9CFC-CB7D-485F-98AF-C01D6774940E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F59D9CFC-CB7D-485F-98AF-C01D6774940E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C9AA239-47E2-427B-B478-62B949ABA3DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C9AA239-47E2-427B-B478-62B949ABA3DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C9AA239-47E2-427B-B478-62B949ABA3DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C9AA239-47E2-427B-B478-62B949ABA3DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F59D9CFC-CB7D-485F-98AF-C01D6774940E} = {3C3530CC-A198-466F-B0EC-EF6B36E1F1AF}
+		{9C9AA239-47E2-427B-B478-62B949ABA3DB} = {3C3530CC-A198-466F-B0EC-EF6B36E1F1AF}
 	EndGlobalSection
 EndGlobal
