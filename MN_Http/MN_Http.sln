@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetriesImplementation", "Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MN_HttpClient", "MN_HttpClient\MN_HttpClient.csproj", "{68E219BC-C570-467A-9139-F7C26C23FB77}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MN_Proxy", "MN_Proxy\MN_Proxy.csproj", "{15285D5A-5604-41F5-AD46-47ADDBA698F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{68E219BC-C570-467A-9139-F7C26C23FB77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68E219BC-C570-467A-9139-F7C26C23FB77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68E219BC-C570-467A-9139-F7C26C23FB77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15285D5A-5604-41F5-AD46-47ADDBA698F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15285D5A-5604-41F5-AD46-47ADDBA698F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15285D5A-5604-41F5-AD46-47ADDBA698F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15285D5A-5604-41F5-AD46-47ADDBA698F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F59D9CFC-CB7D-485F-98AF-C01D6774940E} = {3C3530CC-A198-466F-B0EC-EF6B36E1F1AF}
