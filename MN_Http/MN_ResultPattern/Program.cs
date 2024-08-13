@@ -77,23 +77,3 @@ app.MapGet("/uservalidation", (int? path) =>
 });
 
 app.Run();
-
-// RFC 9457
-//application/problem+json !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-// typ = dokumentacja
-// title = tytuł błędu
-// oba wyżej ustawiane automatycznie na podstawie status code
-
-
-
-// detail = szczegóły błędu
-
-// jak fluent validation na problem details przerobić
-    // trance id globalnei
-
-// global error handling
-
-
-// może nawet w title lub description dawać kod błędu
-// po kluczu można podpiąć zmienne z modelu
