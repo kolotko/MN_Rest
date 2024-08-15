@@ -1,0 +1,7 @@
+﻿{
+  "Name":"Jan Kowalski",
+  "Age": "30",
+  "IsStudent":false,
+  "Date":"2024-08-14T18:14:33.4494601+02:00" /* Today? */
+  // Example comment
+}

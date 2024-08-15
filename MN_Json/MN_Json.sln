@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MN_Json", "MN_Json\MN_Json.csproj", "{F6F1B1EA-BC02-4D72-9D75-CB51A6D3115C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6F1B1EA-BC02-4D72-9D75-CB51A6D3115C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6F1B1EA-BC02-4D72-9D75-CB51A6D3115C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6F1B1EA-BC02-4D72-9D75-CB51A6D3115C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6F1B1EA-BC02-4D72-9D75-CB51A6D3115C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
