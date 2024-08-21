@@ -35,3 +35,19 @@ public class Person3
 
     public int AgeReadonly { get; private set; } = 30;
 }
+
+//source generator
+[JsonSerializable(typeof(Person4))]
+[JsonSourceGenerationOptions(
+    GenerationMode = JsonSourceGenerationMode.Default, 
+    PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase)]
+public partial class PersonJsonContext : JsonSerializerContext
+{
+}
+public class Person4
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public bool IsStudent { get; set; }
+    public DateTime Date { get; set; }
+}

@@ -73,3 +73,16 @@ var optionsWriteIndented = new JsonSerializerOptions
 };
 
 string jsonString222 = JsonSerializer.Serialize(personIgnore, optionsWriteIndented);
+
+//ignorowanie niektórych pól i generowanie jsona z wcięciami, ignoruje kiedy private set i wartośc default
+Person4 personSourceGenerator = new Person4
+{
+    Name = "Jan Kowalski",
+    Age = 30,
+    IsStudent = default,
+    Date = DateTime.Now
+};
+
+string jsonSourceGenerator = JsonSerializer.Serialize(personSourceGenerator, PersonJsonContext.Default.Person4);
+Person4 personSourceGenerator2 = JsonSerializer.Deserialize<Person4>(jsonSourceGenerator, PersonJsonContext.Default.Person4);
+var i = 1;
